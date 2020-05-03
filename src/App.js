@@ -3,6 +3,7 @@ import "./App.css";
 import axios from "axios";
 import { Card } from "@material-ui/core";
 import MediaCard from "./Component/MediaCard";
+import SearchNav from "./Component/SearchNav";
 
 function App() {
   //https://itunes.apple.com/search?term=jack+johnson
@@ -33,15 +34,17 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <input onChange={(event) => setQuery(event.target.value)} />
-        <button onClick={() => setToggle(!toggle)}>Search</button>
+        <SearchNav
+          setQuery={setQuery}
+          setToggle={setToggle}
+          toggle={toggle}
+        ></SearchNav>
         <p>{query}</p>
         <div>
           {songs.map((song) => {
             return (
               <MediaCard key={song.trackId} song={song}>
                 {/* <h1>{song.artistName}</h1>
-
                 <h2>{song.trackName}</h2>
                 <h3>{song.collectionName}</h3>
                 <img src={song.artworkUrl100} /> */}
